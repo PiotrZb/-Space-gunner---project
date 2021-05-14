@@ -1,0 +1,30 @@
+TEMPLATE = app
+CONFIG += console c++17
+CONFIG -= app_bundle
+CONFIG -= qt
+
+SOURCES += \
+        bullet.cpp \
+        fpscounter.cpp \
+        hero.cpp \
+        main.cpp \
+        menu.cpp \
+        scene1.cpp \
+        sounds.cpp
+        INCLUDEPATH += "C:/sfml/SFML-2.5.1/include"
+        LIBS += -L"C:/sfml/SFML-2.5.1/lib"
+        CONFIG(debug, debug|release){
+            LIBS += -lsfml-audio-d -lsfml-graphics-d -lsfml-network-d -lsfml-system-d -lsfml-window-d
+        } else {
+            LIBS += -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-system -lsfml-window
+        }
+
+HEADERS += \
+    bullet.h \
+    fpscounter.h \
+    hero.h \
+    menu.h \
+    scene1.h \
+    sounds.h
+
+RC_ICONS = myappico.ico
