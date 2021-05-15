@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+        airlock.cpp \
         bullet.cpp \
         fpscounter.cpp \
         hero.cpp \
@@ -20,6 +21,7 @@ SOURCES += \
         }
 
 HEADERS += \
+    airlock.h \
     bullet.h \
     fpscounter.h \
     hero.h \
