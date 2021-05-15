@@ -27,4 +27,4 @@ HEADERS += \
     scene1.h \
     sounds.h
 
-RC_ICONS = myappico.ico
+RC_ICONS = icon.ico

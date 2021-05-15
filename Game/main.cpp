@@ -71,8 +71,11 @@ int main(){
 
         menu.contains_mouse(mouse_position);
 
-        //hero update
+        //hero and scene updates
         if(!menu.is_active_){
+
+            scene1.animate_elements(hero.getGlobalBounds());
+            scene1.update_bounds();
 
             hero.gravity();
             hero.collisions(scene1.objects_bounds(), elapsed);
@@ -84,12 +87,21 @@ int main(){
         view.setCenter(hero.getGlobalBounds().left + hero.getGlobalBounds().width, 400);
 
 
-        //removing bullets
+        //moving and removing bullets
+        std::vector<sf::FloatRect> objects_bounds = scene1.objects_bounds();
         for(auto it = bullets.begin(); it != bullets.end(); ++it){
 
             if(!menu.is_active_){it->move_bullet(elapsed);}
 
             sf::FloatRect bullet_rect = it->getGlobalBounds();
+
+            for(auto itr = objects_bounds.begin(); itr != objects_bounds.end(); ++itr){
+
+                if(bullet_rect.intersects(*itr)){
+
+                    bullets.erase(it);
+                }
+            }
 
             if(bullet_rect.left + bullet_rect.width < view.getCenter().x - view.getSize().x
                                 || bullet_rect.left > view.getCenter().x + view.getSize().x){
@@ -214,6 +226,7 @@ int main(){
         if(!menu.is_active_){
 
             window.draw(scene1);
+            scene1.draw_animated_elements(window);
             window.draw(hero);
 
             for(auto it = bullets.begin(); it != bullets.end(); ++it){

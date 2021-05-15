@@ -1,6 +1,6 @@
 #include <windows.h>
 
-IDI_ICON1	ICON	"C:\\Users\\piotr\\Desktop\\semestr 2\\PSIO\\Projekt\\Game\\myappico.ico"
+IDI_ICON1	ICON	"C:\\Users\\piotr\\Documents\\GitHub\\-Space-gunner---project\\Game\\icon.ico"
 
 VS_VERSION_INFO VERSIONINFO
 	FILEVERSION 0,0,0,0
