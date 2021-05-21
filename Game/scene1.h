@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "airlock.h"
+#include "movingplatform.h"
 
 class Scene1 : public sf::Sprite
 {
@@ -19,6 +20,7 @@ private:
     //animated elements
     AirLock air_lock1_;
     AirLock air_lock2_;
+    MovingPlatform platform1_;
 
 public:
 
@@ -27,7 +29,7 @@ public:
     std::vector<sf::FloatRect> objects_bounds();
 
     void draw_animated_elements(sf::RenderWindow &window);
-    void animate_elements(sf::FloatRect hero_bounds);
+    void animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed);
     void update_bounds();
 };
 

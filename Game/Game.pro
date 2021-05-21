@@ -10,6 +10,7 @@ SOURCES += \
         hero.cpp \
         main.cpp \
         menu.cpp \
+        movingplatform.cpp \
         scene1.cpp \
         sounds.cpp
         INCLUDEPATH += "C:/sfml/SFML-2.5.1/include"
@@ -26,6 +27,7 @@ HEADERS += \
     fpscounter.h \
     hero.h \
     menu.h \
+    movingplatform.h \
     scene1.h \
     sounds.h
 

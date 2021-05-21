@@ -8,8 +8,14 @@ Scene1::Scene1(){
 
     setTexture(scene1_texture_);
 
+    //air locks
     air_lock1_.setPosition(1594,201);
     air_lock2_.setPosition(1594,581);
+
+    //platforms
+//    platform1_.setPosition(200,200);
+//    platform1_.set_movement_bounds(sf::FloatRect(201,210,800,30));
+//    platform1_.set_velocity_x(100);
 
     //animated elements
     objects_bounds_.emplace_back(air_lock1_.getGlobalBounds());
@@ -41,7 +47,7 @@ std::vector<sf::FloatRect> Scene1::objects_bounds(){
     return objects_bounds_;
 }
 
-void Scene1::animate_elements(sf::FloatRect hero_bounds){
+void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
 
     if(hero_bounds.intersects(sf::FloatRect(1452,200,299,131))){
 
@@ -60,12 +66,15 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds){
 
         air_lock2_.animate("close");
     }
+
+//    platform1_.move_platform(elapsed);
 }
 
 void Scene1::draw_animated_elements(sf::RenderWindow &window){
 
     window.draw(air_lock1_);
     window.draw(air_lock2_);
+//    window.draw(platform1_);
 }
 
 void Scene1::update_bounds(){

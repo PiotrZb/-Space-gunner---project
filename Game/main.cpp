@@ -74,7 +74,7 @@ int main(){
         //hero and scene updates
         if(!menu.is_active_){
 
-            scene1.animate_elements(hero.getGlobalBounds());
+            scene1.animate_elements(hero.getGlobalBounds(), elapsed);
             scene1.update_bounds();
 
             hero.gravity();
