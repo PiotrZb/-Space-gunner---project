@@ -34,11 +34,13 @@ Hero::Hero(float x, float y){
     current_image_right_ = 0;
     current_image_left_ = 0;
     last_direction_ = "right";
+    gravity_is_active_ = true;
 }
 
 void Hero::move_hero(sf::Time &elapsed){
 
-    move(velocity_x_ * elapsed.asSeconds(), velocity_y_ * elapsed.asSeconds());
+    move((velocity_x_ * elapsed.asSeconds()) + (velocity_xx_ * elapsed.asSeconds()),
+         (velocity_y_ * elapsed.asSeconds()) + (velocity_yy_ * elapsed.asSeconds()));
 
     if(last_direction_ == "right"){
 
@@ -96,9 +98,22 @@ void Hero::set_velocity_y(int vely){
     velocity_y_ = vely;
 }
 
+void Hero::set_velocity_xx(int velxx){
+
+    velocity_xx_ = velxx;
+}
+
+void Hero::set_velocity_yy(int velyy){
+
+    velocity_yy_ = velyy;
+}
+
 void Hero::gravity(){
 
-    velocity_y_ +=21;
+    if(gravity_is_active_){
+
+        velocity_y_ +=21;
+    }
 }
 
 void Hero::load_texture(sf::Texture &texture, std::string file_name, sf::IntRect rect){
@@ -196,6 +211,8 @@ void Hero::collisions(std::vector<sf::FloatRect> objects_bounds, sf::Time &elaps
             }
 
             velocity_x_ = 0;
+            velocity_xx_ = 0;
+            velocity_yy_ = 0;
         }
 
         if(Y.intersects(objects_bounds[i])){
@@ -210,6 +227,9 @@ void Hero::collisions(std::vector<sf::FloatRect> objects_bounds, sf::Time &elaps
                 velocity_y_ = 0;
                 setPosition(getGlobalBounds().left, objects_bounds[i].top - getGlobalBounds().height);
             }
+
+            velocity_xx_ = 0;
+            velocity_yy_ = 0;
         }
     }
 }
@@ -218,4 +238,24 @@ void Hero::reset_run_animation(){
 
     current_image_left_ = 0;
     current_image_right_ = 0;
+}
+
+int Hero::get_velocity_x(){
+
+    return velocity_x_;
+}
+
+int Hero::get_velocity_y(){
+
+    return velocity_y_;
+}
+
+int Hero::get_velocity_xx(){
+
+    return velocity_xx_;
+}
+
+int Hero::get_velocity_yy(){
+
+    return velocity_yy_;
 }

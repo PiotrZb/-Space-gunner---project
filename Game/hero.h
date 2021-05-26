@@ -21,6 +21,8 @@ private:
 
     int velocity_x_;
     int velocity_y_;
+    int velocity_yy_;
+    int velocity_xx_;
 
     int current_image_right_;
     int current_image_left_;
@@ -44,6 +46,12 @@ public:
 
     void set_velocity_x(int velx);
     void set_velocity_y(int vely);
+    int get_velocity_x();
+    int get_velocity_y();
+    int get_velocity_xx();
+    int get_velocity_yy();
+    void set_velocity_xx(int velxx);
+    void set_velocity_yy(int velyy);
     bool jump_is_active();
 
     void change_last_direction(std::string direction);
@@ -51,6 +59,8 @@ public:
     std::string last_direction();
 
     std::pair<float,float> barrel_cords();
+
+    bool gravity_is_active_;
 };
 
 #endif // HERO_H

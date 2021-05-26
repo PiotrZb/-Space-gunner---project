@@ -8,6 +8,7 @@
 
 #include "airlock.h"
 #include "movingplatform.h"
+#include "hero.h"
 
 class Scene1 : public sf::Sprite
 {
@@ -30,7 +31,7 @@ public:
 
     void draw_animated_elements(sf::RenderWindow &window);
     void animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed);
-    void update_bounds();
+    void update_bounds(Hero &hero, sf::Time &elapsed);
 };
 
 #endif // SCENE1_H

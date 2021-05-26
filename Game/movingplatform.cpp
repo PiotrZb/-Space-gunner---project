@@ -34,7 +34,7 @@ void MovingPlatform::move_platform(sf::Time &elapsed){
 
     if(movement_bounds_.top > getGlobalBounds().top){
 
-        velocity_y_ *= abs(velocity_y_);
+        velocity_y_ = abs(velocity_y_);
     }
     else {
 
@@ -65,4 +65,83 @@ int MovingPlatform::get_velocity_x(){
 int MovingPlatform::get_velocity_y(){
 
     return velocity_y_;
+}
+
+void MovingPlatform::collisions(Hero &hero, sf::Time &elapsed){
+
+    sf::FloatRect X = hero.getGlobalBounds();
+    sf::FloatRect Y = hero.getGlobalBounds();
+
+    X.left += (hero.get_velocity_x() * elapsed.asSeconds()) + (hero.get_velocity_xx() * elapsed.asSeconds());
+    Y.top += (hero.get_velocity_y() * elapsed.asSeconds()) + (hero.get_velocity_yy() * elapsed.asSeconds());
+
+
+    if(Y.intersects(getGlobalBounds())){
+
+        if(hero.get_velocity_y() < 0){ //bohater porusza się w górę
+
+            if(velocity_y_ > 0){ // platforma porusza się w dół
+
+                hero.set_velocity_yy(velocity_y_);
+                hero.set_velocity_y(1);
+            }
+            else{ // platforma porusza się w górę
+
+                hero.set_velocity_y(1);
+                hero.set_velocity_yy(0);
+            }
+        }
+        else{ // bohater porusza się w dół
+
+            if(velocity_y_ < 0){ // platforma porusza się w górę
+
+                hero.set_velocity_y(0);
+                hero.set_velocity_yy(velocity_y_);
+            }
+            else{ // platforma porusza się w dół
+
+                hero.set_velocity_y(0);
+                hero.set_velocity_yy(velocity_y_);
+                hero.set_velocity_xx(velocity_x_);
+            }
+
+            hero.gravity_is_active_ = false;
+        }
+    }
+    else{
+
+        hero.gravity_is_active_ = true;
+
+
+        if(X.intersects(getGlobalBounds())){
+
+            if(hero.get_velocity_x() > 0){ // bohater porusza się w prawo
+
+                if(velocity_x_ < 0){ // platforma porusza się w lewo
+
+                    hero.set_velocity_x(0);
+                    hero.set_velocity_xx(velocity_x_);
+                }
+                else{ //platforma porusza sie w prawo
+
+                    hero.set_velocity_x(0);
+                    hero.set_velocity_xx(0);
+                }
+            }
+            else{ //bohater porusza się w lewo
+
+                if(velocity_x_ > 0){ // platforma porusza się w prawo
+
+                    hero.set_velocity_x(0);
+                    hero.set_velocity_xx(velocity_x_);
+                }
+                else{ // platforma porusza się w lewo
+
+                    hero.set_velocity_x(0);
+                    hero.set_velocity_xx(0);
+                }
+            }
+
+        }
+    }
 }

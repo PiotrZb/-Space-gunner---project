@@ -13,9 +13,9 @@ Scene1::Scene1(){
     air_lock2_.setPosition(1594,581);
 
     //platforms
-//    platform1_.setPosition(200,200);
-//    platform1_.set_movement_bounds(sf::FloatRect(201,210,800,30));
-//    platform1_.set_velocity_x(100);
+    platform1_.setPosition(2370,331);
+    platform1_.set_movement_bounds(sf::FloatRect(2370,331,800,26));
+    platform1_.set_velocity_x(100);
 
     //animated elements
     objects_bounds_.emplace_back(air_lock1_.getGlobalBounds());
@@ -67,18 +67,20 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
         air_lock2_.animate("close");
     }
 
-//    platform1_.move_platform(elapsed);
+    platform1_.move_platform(elapsed);
 }
 
 void Scene1::draw_animated_elements(sf::RenderWindow &window){
 
     window.draw(air_lock1_);
     window.draw(air_lock2_);
-//    window.draw(platform1_);
+    window.draw(platform1_);
 }
 
-void Scene1::update_bounds(){
+void Scene1::update_bounds(Hero &hero, sf::Time &elapsed){
 
     objects_bounds_[0] = air_lock1_.getGlobalBounds();
     objects_bounds_[1] = air_lock2_.getGlobalBounds();
+
+    platform1_.collisions(hero, elapsed);
 }

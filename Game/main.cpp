@@ -75,7 +75,7 @@ int main(){
         if(!menu.is_active_){
 
             scene1.animate_elements(hero.getGlobalBounds(), elapsed);
-            scene1.update_bounds();
+            scene1.update_bounds(hero, elapsed);
 
             hero.gravity();
             hero.collisions(scene1.objects_bounds(), elapsed);
@@ -103,8 +103,8 @@ int main(){
                 }
             }
 
-            if(bullet_rect.left + bullet_rect.width < view.getCenter().x - view.getSize().x
-                                || bullet_rect.left > view.getCenter().x + view.getSize().x){
+            if(((bullet_rect.left + bullet_rect.width) < (view.getCenter().x - view.getSize().x))
+                                || (bullet_rect.left > (view.getCenter().x + view.getSize().x))){
 
                 bullets.erase(it);
             }

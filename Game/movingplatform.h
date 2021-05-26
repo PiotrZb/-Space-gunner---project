@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+#include "hero.h"
+
 class MovingPlatform : public sf::Sprite
 {
 private:
@@ -25,6 +27,7 @@ public:
     void set_velocity_y(int velocity_y);
     void set_velocity_x(int velocity_x);
     void move_platform(sf::Time &elapsed);
+    void collisions(Hero &hero, sf::Time &elapsed);
 };
 
 #endif // MOVINGPLATFORM_H
