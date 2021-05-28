@@ -12,7 +12,8 @@ SOURCES += \
         menu.cpp \
         movingplatform.cpp \
         scene1.cpp \
-        sounds.cpp
+        sounds.cpp \
+        turret.cpp
         INCLUDEPATH += "C:/sfml/SFML-2.5.1/include"
         LIBS += -L"C:/sfml/SFML-2.5.1/lib"
         CONFIG(debug, debug|release){
@@ -29,6 +30,7 @@ HEADERS += \
     menu.h \
     movingplatform.h \
     scene1.h \
-    sounds.h
+    sounds.h \
+    turret.h
 
 RC_ICONS = icon.ico

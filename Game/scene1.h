@@ -9,6 +9,8 @@
 #include "airlock.h"
 #include "movingplatform.h"
 #include "hero.h"
+#include "turret.h"
+#include "sounds.h"
 
 class Scene1 : public sf::Sprite
 {
@@ -22,6 +24,12 @@ private:
     AirLock air_lock1_;
     AirLock air_lock2_;
     MovingPlatform platform1_;
+    Turret turret1_;
+
+    //enemy bullets
+    std::list<Bullet> enemy_bullets_;
+
+    Sounds sounds_;
 
 public:
 

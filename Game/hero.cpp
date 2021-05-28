@@ -35,6 +35,7 @@ Hero::Hero(float x, float y){
     current_image_left_ = 0;
     last_direction_ = "right";
     gravity_is_active_ = true;
+    hp_ = 100;
 }
 
 void Hero::move_hero(sf::Time &elapsed){
@@ -258,4 +259,14 @@ int Hero::get_velocity_xx(){
 int Hero::get_velocity_yy(){
 
     return velocity_yy_;
+}
+
+int Hero::get_hp(){
+
+    return hp_;
+}
+
+void Hero::set_hp(int hp){
+
+    hp_ = hp;
 }

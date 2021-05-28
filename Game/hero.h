@@ -27,6 +27,8 @@ private:
     int current_image_right_;
     int current_image_left_;
 
+    int hp_;
+
     std::pair<float,float> barrel_cords_;
 
 public:
@@ -53,6 +55,9 @@ public:
     void set_velocity_xx(int velxx);
     void set_velocity_yy(int velyy);
     bool jump_is_active();
+
+    void set_hp(int hp);
+    int get_hp();
 
     void change_last_direction(std::string direction);
 

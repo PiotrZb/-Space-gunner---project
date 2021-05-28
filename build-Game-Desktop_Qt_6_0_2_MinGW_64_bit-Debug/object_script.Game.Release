@@ -1,0 +1,10 @@
+release/airlock.o
+release/bullet.o
+release/fpscounter.o
+release/hero.o
+release/main.o
+release/menu.o
+release/movingplatform.o
+release/scene1.o
+release/sounds.o
+release/turret.o

@@ -1,0 +1,10 @@
+debug/airlock.o
+debug/bullet.o
+debug/fpscounter.o
+debug/hero.o
+debug/main.o
+debug/menu.o
+debug/movingplatform.o
+debug/scene1.o
+debug/sounds.o
+debug/turret.o
