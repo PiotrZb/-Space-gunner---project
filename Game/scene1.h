@@ -39,7 +39,7 @@ public:
 
     void draw_animated_elements(sf::RenderWindow &window);
     void animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed);
-    void update_bounds(Hero &hero, sf::Time &elapsed);
+    void update_bounds(Hero &hero, sf::Time &elapsed, std::list<Bullet> &hero_bullets);
 };
 
 #endif // SCENE1_H

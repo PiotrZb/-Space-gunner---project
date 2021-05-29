@@ -7,6 +7,7 @@ SOURCES += \
         airlock.cpp \
         bullet.cpp \
         fpscounter.cpp \
+        gameover.cpp \
         hero.cpp \
         main.cpp \
         menu.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     airlock.h \
     bullet.h \
     fpscounter.h \
+    gameover.h \
     hero.h \
     menu.h \
     movingplatform.h \

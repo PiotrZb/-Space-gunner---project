@@ -19,7 +19,6 @@ private:
 
     int hp_;
 
-
 public:
 
     Turret();
@@ -27,6 +26,8 @@ public:
     void set_hp(int hp);
     int get_hp();
     bool shot(std::list<Bullet> &bullets, sf::FloatRect hero_rec);
+
+    bool is_alive_;
 };
 
 #endif // TURRET_H

@@ -27,6 +27,7 @@ Turret::Turret(){
     rotate(180);
     setScale(2,2);
     hp_ = 100;
+    is_alive_ = true;
 }
 
 void Turret::set_hp(int hp){
@@ -42,7 +43,9 @@ int Turret::get_hp(){
 bool Turret::shot(std::list<Bullet> &bullets, sf::FloatRect hero_rec){
 
     if(getGlobalBounds().top + 24 >= hero_rec.top && getGlobalBounds().top - 24 <= hero_rec.top + hero_rec.height
-                                                  && clock_.getElapsedTime().asSeconds() >= 1){
+                                                  && clock_.getElapsedTime().asSeconds() >= 1
+                                                  && (getGlobalBounds().left - (hero_rec.left + hero_rec.width)) <= 600
+                                                  && getGlobalBounds().left >= hero_rec.left){
 
         bullets.emplace_back(Bullet("left", getGlobalBounds().left - 25, getGlobalBounds().top + 24, bullet_textures_));
         clock_.restart();

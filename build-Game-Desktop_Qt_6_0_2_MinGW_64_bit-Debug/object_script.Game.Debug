@@ -1,6 +1,7 @@
 debug/airlock.o
 debug/bullet.o
 debug/fpscounter.o
+debug/gameover.o
 debug/hero.o
 debug/main.o
 debug/menu.o

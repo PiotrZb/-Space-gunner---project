@@ -7,7 +7,7 @@
 
 class Menu
 {
-private:
+protected:
 
     sf::Font font_;
 
@@ -24,6 +24,7 @@ private:
 
 public:
 
+    Menu() = default;
     Menu(const int &width, const int &height);
 
     void draw(sf::RenderWindow &window);

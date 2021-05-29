@@ -1,6 +1,7 @@
 release/airlock.o
 release/bullet.o
 release/fpscounter.o
+release/gameover.o
 release/hero.o
 release/main.o
 release/menu.o

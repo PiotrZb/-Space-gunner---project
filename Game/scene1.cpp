@@ -9,7 +9,7 @@ Scene1::Scene1(){
     setTexture(scene1_texture_);
 
     //enemies
-    turret1_.setPosition(1400,200);
+    turret1_.setPosition(3660,283);
 
     //air locks
     air_lock1_.setPosition(1594,201);
@@ -75,9 +75,11 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
 
     platform1_.move_platform(elapsed);
 
-    if(turret1_.shot(enemy_bullets_, hero_bounds)){
+    if(turret1_.is_alive_){
+        if(turret1_.shot(enemy_bullets_, hero_bounds)){
 
-        sounds_.play_shot_sound(10);
+            sounds_.play_shot_sound(10);
+        }
     }
 
     for(auto it = enemy_bullets_.begin(); it != enemy_bullets_.end(); ++it){
@@ -91,7 +93,10 @@ void Scene1::draw_animated_elements(sf::RenderWindow &window){
     window.draw(air_lock1_);
     window.draw(air_lock2_);
     window.draw(platform1_);
-    window.draw(turret1_);
+
+    if(turret1_.is_alive_){
+        window.draw(turret1_);
+    }
 
     for(auto it = enemy_bullets_.begin(); it != enemy_bullets_.end(); ++it){
 
@@ -99,7 +104,7 @@ void Scene1::draw_animated_elements(sf::RenderWindow &window){
     }
 }
 
-void Scene1::update_bounds(Hero &hero, sf::Time &elapsed){
+void Scene1::update_bounds(Hero &hero, sf::Time &elapsed, std::list<Bullet> &hero_bullets){
 
     objects_bounds_[0] = air_lock1_.getGlobalBounds();
     objects_bounds_[1] = air_lock2_.getGlobalBounds();
@@ -113,5 +118,19 @@ void Scene1::update_bounds(Hero &hero, sf::Time &elapsed){
             enemy_bullets_.erase(it);
             hero.set_hp(hero.get_hp()-20);
         }
+    }
+
+    for(auto it = hero_bullets.begin(); it != hero_bullets.end(); ++it){
+
+        if(it->getGlobalBounds().intersects(turret1_.getGlobalBounds())){
+
+            turret1_.set_hp(turret1_.get_hp()-20);
+            hero_bullets.erase(it);
+        }
+    }
+
+    if(turret1_.get_hp() <= 0){
+
+        turret1_.is_alive_ = false;
     }
 }
