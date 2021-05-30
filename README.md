@@ -1,5 +1,4 @@
 # -Space-gunner---project
- Student's project (2021)
 
 Graphics and sounds used in the project:
 
