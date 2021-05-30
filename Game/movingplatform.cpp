@@ -138,7 +138,7 @@ void MovingPlatform::collisions(Hero &hero, sf::Time &elapsed){
                 else{ // platforma porusza się w lewo
 
                     hero.set_velocity_x(0);
-                    hero.set_velocity_xx(0);
+                    hero.set_velocity_xx(velocity_x_);
                 }
             }
 

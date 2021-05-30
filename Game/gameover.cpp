@@ -36,4 +36,6 @@ GameOver::GameOver(const int &width, const int &height){
     exit_rec_.setSize(sf::Vector2f(options_text_.getGlobalBounds().width + 300, options_text_.getGlobalBounds().height + 100));
     exit_rec_.setOrigin(sf::Vector2f(exit_rec_.getSize().x/2, exit_rec_.getSize().y/2 - 7));
     exit_rec_.setPosition(sf::Vector2f(width/2, height/2 + 100 + options_rec_.getSize().y));
+
+    is_active_ = false;
 }

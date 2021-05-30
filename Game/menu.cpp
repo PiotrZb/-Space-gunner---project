@@ -127,6 +127,7 @@ void Menu::onclick_event_(sf::Vector2f &mouse_coordinates, sf::RenderWindow &win
 
     if(exit_bounds_.contains(mouse_coordinates)){
 
+        std::cout<<"Program was closed properly"<<std::endl;
         window.close();
     }
 }

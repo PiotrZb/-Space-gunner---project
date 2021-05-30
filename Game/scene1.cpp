@@ -21,6 +21,12 @@ Scene1::Scene1(){
     platform1_.setPosition(2370,331);
     platform1_.set_movement_bounds(sf::FloatRect(2370,331,800,26));
     platform1_.set_velocity_x(100);
+    platform2_.setPosition(3860,171);
+    platform2_.set_movement_bounds(sf::FloatRect(4100,171,1140,26));
+    platform2_.set_velocity_x(100);
+    platform3_.setPosition(5130,711);
+    platform3_.set_movement_bounds(sf::FloatRect(4100,441,1140,26));
+    platform3_.set_velocity_x(100);
 
     //stationary elements
     objects_bounds_.emplace_back(sf::FloatRect(0,0,1,800));
@@ -74,6 +80,8 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
     }
 
     platform1_.move_platform(elapsed);
+    platform2_.move_platform(elapsed);
+    platform3_.move_platform(elapsed);
 
     if(turret1_.is_alive_){
         if(turret1_.shot(enemy_bullets_, hero_bounds)){
@@ -93,6 +101,8 @@ void Scene1::draw_animated_elements(sf::RenderWindow &window){
     window.draw(air_lock1_);
     window.draw(air_lock2_);
     window.draw(platform1_);
+    window.draw(platform2_);
+    window.draw(platform3_);
 
     if(turret1_.is_alive_){
         window.draw(turret1_);
@@ -104,12 +114,26 @@ void Scene1::draw_animated_elements(sf::RenderWindow &window){
     }
 }
 
-void Scene1::update_bounds(Hero &hero, sf::Time &elapsed, std::list<Bullet> &hero_bullets){
+void Scene1::update(Hero &hero, sf::Time &elapsed, std::list<Bullet> &hero_bullets){
 
     objects_bounds_[0] = air_lock1_.getGlobalBounds();
     objects_bounds_[1] = air_lock2_.getGlobalBounds();
 
-    platform1_.collisions(hero, elapsed);
+    //platforms
+    if(hero.getGlobalBounds().left < 3600){
+        platform1_.collisions(hero, elapsed);
+    }
+    if(hero.getGlobalBounds().left > 3600 && hero.getGlobalBounds().left < 5400){
+
+        if(hero.getGlobalBounds().top > 400){
+
+            platform3_.collisions(hero, elapsed);
+        }
+        else{
+
+            platform2_.collisions(hero, elapsed);
+        }
+    }
 
     for(auto it = enemy_bullets_.begin(); it != enemy_bullets_.end(); ++it){
 
@@ -122,7 +146,7 @@ void Scene1::update_bounds(Hero &hero, sf::Time &elapsed, std::list<Bullet> &her
 
     for(auto it = hero_bullets.begin(); it != hero_bullets.end(); ++it){
 
-        if(it->getGlobalBounds().intersects(turret1_.getGlobalBounds())){
+        if(it->getGlobalBounds().intersects(turret1_.getGlobalBounds()) && turret1_.is_alive_){
 
             turret1_.set_hp(turret1_.get_hp()-20);
             hero_bullets.erase(it);

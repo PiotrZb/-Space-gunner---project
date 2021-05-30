@@ -81,7 +81,7 @@ New_game:
             if(!menu.is_active_){
 
                 scene1.animate_elements(hero.getGlobalBounds(), elapsed);
-                scene1.update_bounds(hero, elapsed, bullets);
+                scene1.update(hero, elapsed, bullets);
 
                 hero.gravity();
                 hero.collisions(scene1.objects_bounds(), elapsed);
