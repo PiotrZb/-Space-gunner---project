@@ -32,6 +32,7 @@ public:
     void play_shot_sound(float volume = 50);
     void play_run_sound(float volume = 50);
     void stop_run_sound();
+    void stop_main_theme();
 
     void sound_load(sf::SoundBuffer &sound, std::string file_name);
 };

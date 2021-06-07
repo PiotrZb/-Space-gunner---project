@@ -83,10 +83,44 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
     platform2_.move_platform(elapsed);
     platform3_.move_platform(elapsed);
 
+    if(soldier1_.get_hp() > 0){
+
+        soldier1_.move_soldier(elapsed);
+        soldier1_.animate();
+    }
+
+    if(soldier2_.get_hp() > 0){
+
+        soldier2_.move_soldier(elapsed);
+        soldier2_.animate();
+    }
+
     if(turret1_.is_alive_){
         if(turret1_.shot(enemy_bullets_, hero_bounds)){
 
             sounds_.play_shot_sound(10);
+        }
+    }
+
+    if(soldier1_.shot(enemy_bullets_, hero_bounds) || soldier2_.shot(enemy_bullets_, hero_bounds)){
+
+        sounds_.play_shot_sound(10);
+     }
+
+
+    if(soldier1_.get_hp() > 0 && abs(hero_bounds.left - soldier1_.getGlobalBounds().left) < 1000){
+
+        sounds_.play_run_sound();
+    }
+    else{
+
+        if(soldier2_.get_hp() > 0 && abs(hero_bounds.left - soldier2_.getGlobalBounds().left) < 1000){
+
+            sounds_.play_run_sound();
+        }
+        else{
+
+            sounds_.stop_run_sound();
         }
     }
 
@@ -100,11 +134,23 @@ void Scene1::draw_animated_elements(sf::RenderWindow &window){
 
     window.draw(air_lock1_);
     window.draw(air_lock2_);
+
     window.draw(platform1_);
     window.draw(platform2_);
     window.draw(platform3_);
 
+    if(soldier1_.get_hp() > 0){
+
+        window.draw(soldier1_);
+    }
+
+    if(soldier2_.get_hp() > 0){
+
+        window.draw(soldier2_);
+    }
+
     if(turret1_.is_alive_){
+
         window.draw(turret1_);
     }
 
@@ -149,6 +195,18 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::list<Bullet> &hero_bulle
         if(it->getGlobalBounds().intersects(turret1_.getGlobalBounds()) && turret1_.is_alive_){
 
             turret1_.set_hp(turret1_.get_hp()-20);
+            hero_bullets.erase(it);
+        }
+
+        if(it->getGlobalBounds().intersects(soldier1_.getGlobalBounds()) && soldier1_.get_hp() > 0){
+
+            soldier1_.set_hp(soldier1_.get_hp() - 20);
+            hero_bullets.erase(it);
+        }
+
+        if(it->getGlobalBounds().intersects(soldier2_.getGlobalBounds()) && soldier2_.get_hp() > 0){
+
+            soldier2_.set_hp(soldier2_.get_hp() - 20);
             hero_bullets.erase(it);
         }
     }

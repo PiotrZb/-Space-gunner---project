@@ -11,6 +11,7 @@
 #include "hero.h"
 #include "turret.h"
 #include "sounds.h"
+#include "soldier.h"
 
 class Scene1 : public sf::Sprite
 {
@@ -29,6 +30,9 @@ private:
 
     //enemies
     Turret turret1_;
+    Soldier soldier1_ = Soldier(1150,331,sf::FloatRect(1150,193,400,140));
+    Soldier soldier2_ = Soldier(3430,711,sf::FloatRect(3430,571,400,140));
+
 
     //enemy bullets
     std::list<Bullet> enemy_bullets_;

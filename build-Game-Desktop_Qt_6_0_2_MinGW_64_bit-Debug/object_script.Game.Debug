@@ -7,5 +7,6 @@ debug/main.o
 debug/menu.o
 debug/movingplatform.o
 debug/scene1.o
+debug/soldier.o
 debug/sounds.o
 debug/turret.o

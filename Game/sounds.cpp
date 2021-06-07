@@ -64,3 +64,8 @@ void Sounds::play_shot_sound(float volume){
     shot_sound_.setVolume(volume);
     shot_sound_.play();
 }
+
+void Sounds::stop_main_theme(){
+
+    main_theme_.stop();
+}

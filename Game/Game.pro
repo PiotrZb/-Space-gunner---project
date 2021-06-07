@@ -13,6 +13,7 @@ SOURCES += \
         menu.cpp \
         movingplatform.cpp \
         scene1.cpp \
+        soldier.cpp \
         sounds.cpp \
         turret.cpp
         INCLUDEPATH += "C:/sfml/SFML-2.5.1/include"
@@ -32,6 +33,7 @@ HEADERS += \
     menu.h \
     movingplatform.h \
     scene1.h \
+    soldier.h \
     sounds.h \
     turret.h
 

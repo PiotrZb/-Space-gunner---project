@@ -49,6 +49,7 @@ bool Turret::shot(std::list<Bullet> &bullets, sf::FloatRect hero_rec){
 
         bullets.emplace_back(Bullet("left", getGlobalBounds().left - 25, getGlobalBounds().top + 24, bullet_textures_));
         clock_.restart();
+
         return true;
     }
     else{

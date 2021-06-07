@@ -89,6 +89,8 @@ New_game:
                 hero.animate();
             }
 
+            if(hero.getPosition().y > 800){hero.set_hp(0);}
+
             //camera update
             view.setCenter(hero.getGlobalBounds().left + hero.getGlobalBounds().width, 400);
 
@@ -252,7 +254,7 @@ New_game:
 
     if(window.isOpen()){game_over.is_active_ = true;}
 
-    while(game_over.is_active_){
+    while(game_over.is_active_ && window.isOpen()){
 
         sf::Vector2f mouse_position = window.mapPixelToCoords(sf::Mouse::getPosition(window));
 

@@ -7,5 +7,6 @@ release/main.o
 release/menu.o
 release/movingplatform.o
 release/scene1.o
+release/soldier.o
 release/sounds.o
 release/turret.o

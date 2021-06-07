@@ -8,7 +8,7 @@
 
 class Hero : public sf::Sprite
 {
-private:
+protected:
 
     std::vector<sf::Texture> standing_;
     std::vector<sf::Texture> running_right_;
@@ -16,6 +16,7 @@ private:
     std::vector<sf::Texture> jumping_;
 
     sf::Clock clock;
+    sf::Clock shot_clock_;
 
     std::string last_direction_;
 
