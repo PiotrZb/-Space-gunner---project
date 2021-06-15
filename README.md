@@ -6,6 +6,8 @@ Background - https://www.pexels.com/pl-pl/zdjecie/zdjecie-supernova-in-galaxy-38
 
 Hero and scene textures - https://opengameart.org/content/open-gunner-starter-kit (Master484)
 
+Asteroids - http://opengameart.org/users/varkalandar (Hansjörg Malthaner)
+
 Font - https://www.1001freefonts.com/dustismo-roman.font (Cheapskate Fonts)
 
 Sounds:
