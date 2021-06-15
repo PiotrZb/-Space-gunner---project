@@ -1,4 +1,5 @@
 release/airlock.o
+release/asteroid.o
 release/bullet.o
 release/fpscounter.o
 release/gameover.o

@@ -113,7 +113,7 @@ void Hero::gravity(){
 
     if(gravity_is_active_){
 
-        velocity_y_ +=21;
+        //velocity_y_ +=21;
     }
 }
 

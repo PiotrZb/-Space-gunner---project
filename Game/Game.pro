@@ -5,6 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         airlock.cpp \
+        asteroid.cpp \
         bullet.cpp \
         fpscounter.cpp \
         gameover.cpp \
@@ -26,6 +27,7 @@ SOURCES += \
 
 HEADERS += \
     airlock.h \
+    asteroid.h \
     bullet.h \
     fpscounter.h \
     gameover.h \

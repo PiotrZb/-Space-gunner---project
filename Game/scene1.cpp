@@ -11,11 +11,18 @@ Scene1::Scene1(){
     //enemies
     turret1_.setPosition(3660,283);
 
+    for(int i = 0; i < 30; i++){
+
+        asteroids_.emplace_back(std::make_unique<Asteroid>());
+    }
+
     //air locks
     air_lock1_.setPosition(1594,201);
     air_lock2_.setPosition(1594,581);
+    air_lock3_.setPosition(5673,91);
     objects_bounds_.emplace_back(air_lock1_.getGlobalBounds());
     objects_bounds_.emplace_back(air_lock2_.getGlobalBounds());
+    objects_bounds_.emplace_back(air_lock3_.getGlobalBounds());
 
     //platforms
     platform1_.setPosition(2370,331);
@@ -52,6 +59,11 @@ Scene1::Scene1(){
     objects_bounds_.emplace_back(sf::FloatRect(3660,231,200,100));
     objects_bounds_.emplace_back(sf::FloatRect(3560,171,300,60));
     objects_bounds_.emplace_back(sf::FloatRect(3518,205,42,26));
+    objects_bounds_.emplace_back(sf::FloatRect(5660,0,100,83));
+    objects_bounds_.emplace_back(sf::FloatRect(5460,221,450,150));
+    objects_bounds_.emplace_back(sf::FloatRect(5460,171,100,50));
+    objects_bounds_.emplace_back(sf::FloatRect(5610,371,100,202));
+    objects_bounds_.emplace_back(sf::FloatRect(5460,711,450,89));
 }
 
 std::vector<sf::FloatRect> Scene1::objects_bounds(){
@@ -77,6 +89,15 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
     else{
 
         air_lock2_.animate("close");
+    }
+
+    if(hero_bounds.intersects(sf::FloatRect(5560,91,310,130))){
+
+        air_lock3_.animate("open");
+    }
+    else{
+
+        air_lock3_.animate("close");
     }
 
     platform1_.move_platform(elapsed);
@@ -128,16 +149,27 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
 
         it->move_bullet(elapsed);
     }
+
+    for(int i = 0; i < asteroids_.size(); i++){
+
+        asteroids_[i]->move_asteroid(elapsed);
+    }
 }
 
 void Scene1::draw_animated_elements(sf::RenderWindow &window){
 
     window.draw(air_lock1_);
     window.draw(air_lock2_);
+     window.draw(air_lock3_);
 
     window.draw(platform1_);
     window.draw(platform2_);
     window.draw(platform3_);
+
+    for(int i = 0; i < asteroids_.size(); i++){
+
+        window.draw(*asteroids_[i]);
+    }
 
     if(soldier1_.get_hp() > 0){
 
@@ -164,6 +196,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::list<Bullet> &hero_bulle
 
     objects_bounds_[0] = air_lock1_.getGlobalBounds();
     objects_bounds_[1] = air_lock2_.getGlobalBounds();
+    objects_bounds_[2] = air_lock3_.getGlobalBounds();
 
     //platforms
     if(hero.getGlobalBounds().left < 3600){

@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <memory>
 
 #include "airlock.h"
 #include "movingplatform.h"
@@ -12,6 +13,7 @@
 #include "turret.h"
 #include "sounds.h"
 #include "soldier.h"
+#include "asteroid.h"
 
 class Scene1 : public sf::Sprite
 {
@@ -24,9 +26,11 @@ private:
     //animated elements
     AirLock air_lock1_;
     AirLock air_lock2_;
+    AirLock air_lock3_;
     MovingPlatform platform1_;
     MovingPlatform platform2_;
     MovingPlatform platform3_;
+    std::vector<std::unique_ptr<Asteroid>> asteroids_;
 
     //enemies
     Turret turret1_;

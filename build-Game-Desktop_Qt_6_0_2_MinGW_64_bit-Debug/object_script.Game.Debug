@@ -1,4 +1,5 @@
 debug/airlock.o
+debug/asteroid.o
 debug/bullet.o
 debug/fpscounter.o
 debug/gameover.o

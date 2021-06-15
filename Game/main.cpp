@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <ctime>
 
 #include "menu.h"
 #include "fpscounter.h"
@@ -47,6 +48,8 @@ int main(){
 
     //fps counter
     Fpscounter fpscounter;
+
+    srand(time(NULL));
 
 New_game:
     {
