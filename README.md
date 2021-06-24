@@ -10,6 +10,8 @@ Asteroids - http://opengameart.org/users/varkalandar (Hansjörg Malthaner)
 
 Font - https://www.1001freefonts.com/dustismo-roman.font (Cheapskate Fonts)
 
+jetpack - https://opengameart.org/content/monkey-on-mars-share-the-love (dannorder)
+
 Sounds:
 
 shot1 - https://freesound.org/people/michael_grinnell/sounds/512469/ (michael_grinnell)
