@@ -20,9 +20,11 @@ Scene1::Scene1(){
     air_lock1_.setPosition(1594,201);
     air_lock2_.setPosition(1594,581);
     air_lock3_.setPosition(5673,91);
+    air_lock4_.setPosition(5673,581);
     objects_bounds_.emplace_back(air_lock1_.getGlobalBounds());
     objects_bounds_.emplace_back(air_lock2_.getGlobalBounds());
     objects_bounds_.emplace_back(air_lock3_.getGlobalBounds());
+    objects_bounds_.emplace_back(air_lock4_.getGlobalBounds());
 
     //platforms
     platform1_.setPosition(2370,331);
@@ -30,10 +32,10 @@ Scene1::Scene1(){
     platform1_.set_velocity_x(100);
     platform2_.setPosition(3860,171);
     platform2_.set_movement_bounds(sf::FloatRect(4100,171,1140,26));
-    platform2_.set_velocity_x(100);
+    platform2_.set_velocity_x(200);
     platform3_.setPosition(5130,711);
     platform3_.set_movement_bounds(sf::FloatRect(4100,441,1140,26));
-    platform3_.set_velocity_x(100);
+    platform3_.set_velocity_x(200);
 
     //stationary elements
     objects_bounds_.emplace_back(sf::FloatRect(0,0,1,800));
@@ -64,6 +66,17 @@ Scene1::Scene1(){
     objects_bounds_.emplace_back(sf::FloatRect(5460,171,100,50));
     objects_bounds_.emplace_back(sf::FloatRect(5610,371,100,202));
     objects_bounds_.emplace_back(sf::FloatRect(5460,711,450,89));
+    objects_bounds_.emplace_back(sf::FloatRect(9840,711,350,89));
+
+    if(!jetpack_texture_.loadFromFile("Textures/Hero/jetpack.png")){
+        std::cout<<"ERROR::SCENE1::TEXTURE FAILED TO LOAD -> Textures/Hero/jetpack.png"<<std::endl;
+    }
+    jetpack_.setTexture(jetpack_texture_);
+    jetpack_.setPosition(5831,676);
+    jetpack_.setScale(4,4);
+    jetpack2_.setTexture(jetpack_texture_);
+    jetpack2_.setPosition(5831,185);
+    jetpack2_.setScale(4,4);
 }
 
 std::vector<sf::FloatRect> Scene1::objects_bounds(){
@@ -98,6 +111,15 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
     else{
 
         air_lock3_.animate("close");
+    }
+
+    if(hero_bounds.intersects(sf::FloatRect(5530,573,290,138))){
+
+        air_lock4_.animate("open");
+    }
+    else{
+
+        air_lock4_.animate("close");
     }
 
     platform1_.move_platform(elapsed);
@@ -156,11 +178,18 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
     }
 }
 
-void Scene1::draw_animated_elements(sf::RenderWindow &window){
+void Scene1::draw_animated_elements(sf::RenderWindow &window, bool has_jetpack_){
+
+    if(!has_jetpack_){
+
+        window.draw(jetpack_);
+        window.draw(jetpack2_);
+    }
 
     window.draw(air_lock1_);
     window.draw(air_lock2_);
-     window.draw(air_lock3_);
+    window.draw(air_lock3_);
+    window.draw(air_lock4_);
 
     window.draw(platform1_);
     window.draw(platform2_);
@@ -197,6 +226,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
     objects_bounds_[0] = air_lock1_.getGlobalBounds();
     objects_bounds_[1] = air_lock2_.getGlobalBounds();
     objects_bounds_[2] = air_lock3_.getGlobalBounds();
+    objects_bounds_[3] = air_lock4_.getGlobalBounds();
 
     //platforms
     if(hero.getGlobalBounds().left < 3600){
@@ -253,5 +283,10 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
     if(turret1_.get_hp() <= 0){
 
         turret1_.is_alive_ = false;
+    }
+
+    if(hero.getGlobalBounds().intersects(sf::FloatRect(5840,685,18,18)) || hero.getGlobalBounds().intersects(sf::FloatRect(5840,194,18,18))){
+
+        hero.set_jetpack(true);
     }
 }

@@ -36,6 +36,7 @@ Hero::Hero(float x, float y){
     last_direction_ = "right";
     gravity_is_active_ = true;
     hp_ = 100;
+    has_jetpack_ = false;
 }
 
 void Hero::move_hero(sf::Time &elapsed){
@@ -269,4 +270,14 @@ int Hero::get_hp(){
 void Hero::set_hp(int hp){
 
     hp_ = hp;
+}
+
+bool Hero::has_jetpack(){
+
+    return has_jetpack_;
+}
+
+void Hero::set_jetpack(bool hpk){
+
+    has_jetpack_ = hpk;
 }

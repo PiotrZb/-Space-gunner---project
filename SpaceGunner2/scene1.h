@@ -22,11 +22,15 @@ private:
     //stationary elements
     std::vector<sf::FloatRect> objects_bounds_;
     sf::Texture scene1_texture_;
+    sf::Texture jetpack_texture_;
+    sf::Sprite jetpack_;
+    sf::Sprite jetpack2_;
 
     //animated elements
     AirLock air_lock1_;
     AirLock air_lock2_;
     AirLock air_lock3_;
+    AirLock air_lock4_;
     MovingPlatform platform1_;
     MovingPlatform platform2_;
     MovingPlatform platform3_;
@@ -49,7 +53,7 @@ public:
 
     std::vector<sf::FloatRect> objects_bounds();
 
-    void draw_animated_elements(sf::RenderWindow &window);
+    void draw_animated_elements(sf::RenderWindow &window, bool has_jetpack_);
     void animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed);
     void update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<Bullet>> &hero_bullets);
 };

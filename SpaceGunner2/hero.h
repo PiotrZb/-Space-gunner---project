@@ -29,6 +29,7 @@ protected:
     int current_image_left_;
 
     int hp_;
+    bool has_jetpack_;
 
     std::pair<float,float> barrel_cords_;
 
@@ -56,6 +57,8 @@ public:
     void set_velocity_xx(int velxx);
     void set_velocity_yy(int velyy);
     bool jump_is_active();
+    bool has_jetpack();
+    void set_jetpack(bool hpk);
 
     void set_hp(int hp);
     int get_hp();

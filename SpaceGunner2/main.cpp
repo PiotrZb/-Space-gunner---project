@@ -114,7 +114,6 @@ New_game:
                         || (bullets[i]->getGlobalBounds().left > (view.getCenter().x + view.getSize().x))){
 
                     bullets.erase(bullets.begin()+i);
-                    collision = true;
                     break;
                 }
                 else{
@@ -168,10 +167,18 @@ New_game:
                 }
 
                 //jump
-                if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && hero.jump_is_active()){
+                if((sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && hero.jump_is_active())
+                  || (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && hero.has_jetpack())){
 
-                    hero.set_velocity_y(-600);
-                    sounds.play_jump_sound();
+                    if(hero.has_jetpack()){
+
+                        hero.set_velocity_y(-300);
+                    }
+                    else{
+
+                        hero.set_velocity_y(-600);
+                        sounds.play_jump_sound();
+                    }
                     sounds.stop_run_sound();
                 }
             }
@@ -246,7 +253,7 @@ New_game:
             if(!menu.is_active_){
 
                 window.draw(scene1);
-                scene1.draw_animated_elements(window);
+                scene1.draw_animated_elements(window, hero.has_jetpack());
                 window.draw(hero);
 
                 for(size_t i = 0; i < bullets.size(); i++){
