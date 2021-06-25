@@ -4,6 +4,7 @@ debug/bullet.o
 debug/fpscounter.o
 debug/gameover.o
 debug/hero.o
+debug/hud.o
 debug/main.o
 debug/menu.o
 debug/movingplatform.o

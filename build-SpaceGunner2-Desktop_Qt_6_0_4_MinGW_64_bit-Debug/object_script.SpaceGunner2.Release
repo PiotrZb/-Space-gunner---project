@@ -4,6 +4,7 @@ release/bullet.o
 release/fpscounter.o
 release/gameover.o
 release/hero.o
+release/hud.o
 release/main.o
 release/menu.o
 release/movingplatform.o

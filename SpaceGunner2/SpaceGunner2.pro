@@ -10,6 +10,7 @@ SOURCES += \
         fpscounter.cpp \
         gameover.cpp \
         hero.cpp \
+        hud.cpp \
         main.cpp \
         menu.cpp \
         movingplatform.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     fpscounter.h \
     gameover.h \
     hero.h \
+    hud.h \
     menu.h \
     movingplatform.h \
     scene1.h \

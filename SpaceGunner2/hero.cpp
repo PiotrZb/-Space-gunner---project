@@ -35,7 +35,7 @@ Hero::Hero(float x, float y){
     current_image_left_ = 0;
     last_direction_ = "right";
     gravity_is_active_ = true;
-    hp_ = 100;
+    hp_ = 4;
     has_jetpack_ = false;
 }
 

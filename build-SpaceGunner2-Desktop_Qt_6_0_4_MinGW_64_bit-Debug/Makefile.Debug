@@ -56,6 +56,7 @@ SOURCES       = ..\SpaceGunner2\airlock.cpp \
 		..\SpaceGunner2\fpscounter.cpp \
 		..\SpaceGunner2\gameover.cpp \
 		..\SpaceGunner2\hero.cpp \
+		..\SpaceGunner2\hud.cpp \
 		..\SpaceGunner2\main.cpp \
 		..\SpaceGunner2\menu.cpp \
 		..\SpaceGunner2\movingplatform.cpp \
@@ -69,6 +70,7 @@ OBJECTS       = debug/airlock.o \
 		debug/fpscounter.o \
 		debug/gameover.o \
 		debug/hero.o \
+		debug/hud.o \
 		debug/main.o \
 		debug/menu.o \
 		debug/movingplatform.o \
@@ -83,6 +85,7 @@ DIST          =  airlock.h \
 		fpscounter.h \
 		gameover.h \
 		hero.h \
+		hud.h \
 		menu.h \
 		movingplatform.h \
 		scene1.h \
@@ -94,6 +97,7 @@ DIST          =  airlock.h \
 		..\SpaceGunner2\fpscounter.cpp \
 		..\SpaceGunner2\gameover.cpp \
 		..\SpaceGunner2\hero.cpp \
+		..\SpaceGunner2\hud.cpp \
 		..\SpaceGunner2\main.cpp \
 		..\SpaceGunner2\menu.cpp \
 		..\SpaceGunner2\movingplatform.cpp \
@@ -126,7 +130,7 @@ dist:
 	$(ZIP) SpaceGunner2.zip $(SOURCES) $(DIST) ..\SpaceGunner2\SpaceGunner2.pro C:\Qt\6.0.4\mingw81_64\mkspecs\features\spec_pre.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\device_config.prf C:\Qt\6.0.4\mingw81_64\mkspecs\common\sanitize.conf C:\Qt\6.0.4\mingw81_64\mkspecs\common\gcc-base.conf C:\Qt\6.0.4\mingw81_64\mkspecs\common\g++-base.conf C:\Qt\6.0.4\mingw81_64\mkspecs\features\win32\windows_vulkan_sdk.prf C:\Qt\6.0.4\mingw81_64\mkspecs\common\windows-vulkan.conf C:\Qt\6.0.4\mingw81_64\mkspecs\common\g++-win32.conf C:\Qt\6.0.4\mingw81_64\mkspecs\common\windows-desktop.conf C:\Qt\6.0.4\mingw81_64\mkspecs\qconfig.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_ext_freetype.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_ext_libpng.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_concurrent.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_concurrent_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_core.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_core5compat.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_core5compat_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_core_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_core_qobject_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_dbus.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_dbus_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_designer.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_designer_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_designercomponents_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_devicediscovery_support_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_entrypoint_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_fb_support_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_gui.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_gui_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_help.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_help_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_linguist.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_linguist_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_network.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_network_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_opengl.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_opengl_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_openglwidgets.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_openglwidgets_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_packetprotocol_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_printsupport.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_printsupport_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qml.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qml_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmlcompiler_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmldebug_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmldevtools_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmlmodels.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmlmodels_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmltest.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmltest_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_qmlworkerscript_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3d.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3d_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3dassetimport.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3dassetimport_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3druntimerender.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3druntimerender_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3dutils.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick3dutils_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quick_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2impl.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickcontrols2impl_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickparticles_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickshapes_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quicktemplates2_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickwidgets.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_quickwidgets_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_shadertools.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_shadertools_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_sql.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_sql_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_svg.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_svg_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_svgwidgets.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_svgwidgets_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_testlib.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_testlib_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_tools_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_uiplugin.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_uitools.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_uitools_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_widgets.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_widgets_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_xml.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_xml_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\modules\qt_lib_zlib_private.pri C:\Qt\6.0.4\mingw81_64\mkspecs\features\qt_functions.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\qt_config.prf C:\Qt\6.0.4\mingw81_64\mkspecs\win32-g++\qmake.conf C:\Qt\6.0.4\mingw81_64\mkspecs\features\spec_post.prf .qmake.stash C:\Qt\6.0.4\mingw81_64\mkspecs\features\exclusive_builds.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\toolchain.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\default_pre.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\win32\default_pre.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\resolve_config.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\exclusive_builds_post.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\default_post.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\build_pass.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\win32\console.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\qml_debug.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\entrypoint.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\precompile_header.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\warn_on.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\qmake_use.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\file_copies.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\testcase_targets.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\exceptions.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\yacc.prf C:\Qt\6.0.4\mingw81_64\mkspecs\features\lex.prf ..\SpaceGunner2\SpaceGunner2.pro      
 
 clean: compiler_clean 
-	-$(DEL_FILE) debug\airlock.o debug\asteroid.o debug\bullet.o debug\fpscounter.o debug\gameover.o debug\hero.o debug\main.o debug\menu.o debug\movingplatform.o debug\scene1.o debug\soldier.o debug\sounds.o debug\turret.o
+	-$(DEL_FILE) debug\airlock.o debug\asteroid.o debug\bullet.o debug\fpscounter.o debug\gameover.o debug\hero.o debug\hud.o debug\main.o debug\menu.o debug\movingplatform.o debug\scene1.o debug\soldier.o debug\sounds.o debug\turret.o
 	-$(DEL_FILE) debug\SpaceGunner2_resource_res.o
 
 distclean: clean 
@@ -615,6 +619,83 @@ debug/hero.o: ../SpaceGunner2/hero.cpp ../SpaceGunner2/hero.h \
 		C:/sfml/SFML-2.5.1/include/SFML/Graphics/VertexBuffer.hpp
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\hero.o ..\SpaceGunner2\hero.cpp
 
+debug/hud.o: ../SpaceGunner2/hud.cpp ../SpaceGunner2/hud.h \
+		C:/sfml/SFML-2.5.1/include/SFML/Window.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Config.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Clock.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Export.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Time.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Err.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/FileInputStream.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/InputStream.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/NonCopyable.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Lock.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/MemoryInputStream.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Mutex.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Sleep.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/String.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Utf.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Utf.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/System/String.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Thread.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Thread.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/System/ThreadLocal.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/ThreadLocalPtr.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/ThreadLocalPtr.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Vector2.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Vector2.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Vector3.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/System/Vector3.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Clipboard.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Export.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Context.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/GlResource.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/ContextSettings.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Cursor.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Event.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Joystick.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Keyboard.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Mouse.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Sensor.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Touch.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/VideoMode.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/Window.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/WindowHandle.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Window/WindowStyle.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/BlendMode.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Export.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/CircleShape.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Shape.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Drawable.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/RenderStates.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Transform.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Rect.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Rect.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Transformable.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/VertexArray.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Vertex.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Color.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/PrimitiveType.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/ConvexShape.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Font.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Glyph.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Texture.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Image.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/RectangleShape.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/RenderTarget.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/View.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/RenderTexture.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/RenderWindow.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Shader.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Glsl.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Glsl.inl \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Sprite.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/Text.hpp \
+		C:/sfml/SFML-2.5.1/include/SFML/Graphics/VertexBuffer.hpp
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\hud.o ..\SpaceGunner2\hud.cpp
+
 debug/main.o: ../SpaceGunner2/main.cpp C:/sfml/SFML-2.5.1/include/SFML/Window.hpp \
 		C:/sfml/SFML-2.5.1/include/SFML/System.hpp \
 		C:/sfml/SFML-2.5.1/include/SFML/Config.hpp \
@@ -717,7 +798,8 @@ debug/main.o: ../SpaceGunner2/main.cpp C:/sfml/SFML-2.5.1/include/SFML/Window.hp
 		../SpaceGunner2/turret.h \
 		../SpaceGunner2/soldier.h \
 		../SpaceGunner2/asteroid.h \
-		../SpaceGunner2/gameover.h
+		../SpaceGunner2/gameover.h \
+		../SpaceGunner2/hud.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o debug\main.o ..\SpaceGunner2\main.cpp
 
 debug/menu.o: ../SpaceGunner2/menu.cpp ../SpaceGunner2/menu.h \

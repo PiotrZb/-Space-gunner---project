@@ -13,6 +13,7 @@
 #include "bullet.h"
 #include "scene1.h"
 #include "gameover.h"
+#include "hud.h"
 
 void load_texture(sf::Texture &texture, std::string file_path);
 void load_bullet_textures(std::vector<sf::Texture> &bullet_textures);
@@ -60,6 +61,9 @@ New_game:
 
         //hero
         Hero hero(0,700);
+
+        //hud
+        HUD hud;
 
         //bullets
         std::vector<sf::Texture> bullet_textures;
@@ -245,6 +249,9 @@ New_game:
             //fps counter update
             fpscounter.update(window.getView().getCenter());
 
+            //hud update
+            hud.update(window.getView().getCenter(), hero.get_hp());
+
 //--------------------------------------------------------------------------------------------------> Display
 
             window.clear(sf::Color::Black);
@@ -260,6 +267,8 @@ New_game:
 
                     window.draw(*bullets[i]);
                 }
+
+                hud.draw_hud(window);
             }
 
             menu.draw(window);

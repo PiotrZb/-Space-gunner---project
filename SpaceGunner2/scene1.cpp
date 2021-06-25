@@ -249,7 +249,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
         if(hero.getGlobalBounds().intersects(enemy_bullets_[i]->getGlobalBounds())){
 
             enemy_bullets_.erase(enemy_bullets_.begin()+i);
-            hero.set_hp(hero.get_hp()-20);
+            hero.set_hp(hero.get_hp()-1);
         }
         else{
 
