@@ -1,6 +1,8 @@
 # -Space-gunner---project
 
-Graphics and sounds used in the project:
+Graphics and sounds used in the project
+
+Graphics:
 
 Background - https://www.pexels.com/pl-pl/zdjecie/zdjecie-supernova-in-galaxy-3805983/ (Alex Andrews)
 
@@ -29,3 +31,5 @@ jetpack - https://freesound.org/people/primeval_polypod/sounds/158894/ (primeval
 hurt - https://freesound.org/people/tonsil5/sounds/416839/ (tonsil5)
 
 airlock - https://freesound.org/people/Velvorn/sounds/95773/ (Velvorn)
+
+gameover - https://opengameart.org/content/game-over-bad-chest-sfx (Oiboo)
