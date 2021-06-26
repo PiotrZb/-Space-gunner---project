@@ -23,3 +23,5 @@ run - https://freesound.org/people/Nox_Sound/sounds/558471/ (Nox_Sound)
 maintheme - https://freesound.org/people/klavo1985/sounds/519410/ (klavo1985)
 
 mudrun - https://freesound.org/people/EminYILDIRIM/sounds/554711/ (EminYILDIRIM)
+
+jetpack - https://freesound.org/people/primeval_polypod/sounds/158894/ (primeval_polypod)
