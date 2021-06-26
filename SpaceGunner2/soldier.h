@@ -40,6 +40,7 @@ public:
         }
 
         bullet_textures_.emplace_back(texture);
+        hp_ = 100;
     }
 
     void set_movement_bounds(sf::FloatRect movement_bounds);

@@ -177,6 +177,7 @@ New_game:
                     if(hero.has_jetpack()){
 
                         hero.set_velocity_y(-300);
+                        sounds.play_jetpack_sound(20);
                     }
                     else{
 
@@ -184,6 +185,10 @@ New_game:
                         sounds.play_jump_sound();
                     }
                     sounds.stop_run_sound();
+                }
+                else{
+
+                    sounds.stop_jetpack_sound();
                 }
             }
 
@@ -279,6 +284,8 @@ New_game:
     }
 
 //--------------------------------------------------------------------------------------------------> Game Over
+
+    sounds.play_gameover_sound();
 
     if(window.isOpen()){game_over.is_active_ = true;}
 

@@ -11,7 +11,7 @@ Scene1::Scene1(){
     //enemies
     turret1_.setPosition(3660,283);
 
-    for(int i = 0; i < 30; i++){
+    for(int i = 0; i < 15; i++){
 
         asteroids_.emplace_back(std::make_unique<Asteroid>());
     }
@@ -89,37 +89,42 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
     if(hero_bounds.intersects(sf::FloatRect(1452,200,299,131))){
 
         air_lock1_.animate("open");
+        sounds_.play_airlock_sound();
     }
     else{
 
         air_lock1_.animate("close");
-    }
 
-    if(hero_bounds.intersects(sf::FloatRect(1452,580,299,131))){
+        if(hero_bounds.intersects(sf::FloatRect(1452,580,299,131))){
 
-        air_lock2_.animate("open");
-    }
-    else{
+            air_lock2_.animate("open");
+            sounds_.play_airlock_sound();
+        }
+        else{
 
-        air_lock2_.animate("close");
-    }
+            air_lock2_.animate("close");
 
-    if(hero_bounds.intersects(sf::FloatRect(5560,91,310,130))){
+            if(hero_bounds.intersects(sf::FloatRect(5560,91,310,130))){
 
-        air_lock3_.animate("open");
-    }
-    else{
+                air_lock3_.animate("open");
+                sounds_.play_airlock_sound();
+            }
+            else{
 
-        air_lock3_.animate("close");
-    }
+                air_lock3_.animate("close");
 
-    if(hero_bounds.intersects(sf::FloatRect(5530,573,290,138))){
+                if(hero_bounds.intersects(sf::FloatRect(5530,573,290,138))){
 
-        air_lock4_.animate("open");
-    }
-    else{
+                    air_lock4_.animate("open");
+                    sounds_.play_airlock_sound();
+                }
+                else{
 
-        air_lock4_.animate("close");
+                    air_lock4_.animate("close");
+                    sounds_.stop_airlock_sound();
+                }
+            }
+        }
     }
 
     platform1_.move_platform(elapsed);
@@ -250,6 +255,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
 
             enemy_bullets_.erase(enemy_bullets_.begin()+i);
             hero.set_hp(hero.get_hp()-1);
+            sounds_.play_hurt_sound();
         }
         else{
 
@@ -288,5 +294,15 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
     if(hero.getGlobalBounds().intersects(sf::FloatRect(5840,685,18,18)) || hero.getGlobalBounds().intersects(sf::FloatRect(5840,194,18,18))){
 
         hero.set_jetpack(true);
+    }
+
+    for(size_t i = 0; i < asteroids_.size(); i++){
+
+        if(hero.getGlobalBounds().intersects(asteroids_[i]->getGlobalBounds())){
+
+            hero.set_hp(hero.get_hp()-1);
+            asteroids_.erase(asteroids_.begin()+i);
+            break;
+        }
     }
 }
