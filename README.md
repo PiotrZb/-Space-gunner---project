@@ -26,4 +26,4 @@ mudrun - https://freesound.org/people/EminYILDIRIM/sounds/554711/ (EminYILDIRIM)
 
 jetpack - https://freesound.org/people/primeval_polypod/sounds/158894/ (primeval_polypod)
 
-hurt - https://freesound.org/people/mrickey13/sounds/515624/ (mrickey13)
+hurt - https://freesound.org/people/tonsil5/sounds/416839/ (tonsil5)
