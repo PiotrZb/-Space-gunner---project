@@ -77,6 +77,42 @@ Scene1::Scene1(){
     jetpack2_.setTexture(jetpack_texture_);
     jetpack2_.setPosition(5831,185);
     jetpack2_.setScale(4,4);
+
+    std::string line;
+    text_ = "";
+    std::fstream file;
+    file.open("credits.txt", std::ios::in);
+    if(file.is_open()){
+
+        while(getline(file, line)){
+
+            if(line == ""){
+
+                text_ += "\n";
+            }
+            else{
+
+                text_ += line;
+            }
+        }
+    }
+    else{
+
+        std::cout<<"ERROR::SCENE1::FILE FAILED TO OPEN -> credits.txt"<<std::endl;
+    }
+    file.close();
+
+    if(!font_.loadFromFile("Fonts/Dustismo_Roman_Bold.ttf")){
+
+        std::cout<<"ERROR::SCENE1::FONT FAILED TO LOAD -> Fonts/Dustismo_Roman_Bold.ttf"<<std::endl;
+    }
+
+    credits_.setFont(font_);
+    credits_.setString(text_);
+    credits_.setFillColor(sf::Color::White);
+    credits_.setStyle(sf::Text::Style::Bold);
+    credits_.setCharacterSize(15);
+    credits_.setPosition(9750,0 - credits_.getGlobalBounds().height);
 }
 
 std::vector<sf::FloatRect> Scene1::objects_bounds(){
@@ -181,6 +217,11 @@ void Scene1::animate_elements(sf::FloatRect hero_bounds, sf::Time &elapsed){
 
         asteroids_[i]->move_asteroid(elapsed);
     }
+
+    if(sf::IntRect(9750,0,530,711).contains(hero_bounds.left, hero_bounds.top)){
+
+        credits_.move(0, 70 * elapsed.asSeconds());
+    }
 }
 
 void Scene1::draw_animated_elements(sf::RenderWindow &window, bool has_jetpack_){
@@ -224,6 +265,8 @@ void Scene1::draw_animated_elements(sf::RenderWindow &window, bool has_jetpack_)
 
         window.draw(*enemy_bullets_[i]);
     }
+
+    window.draw(credits_);
 }
 
 void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<Bullet> > &hero_bullets){

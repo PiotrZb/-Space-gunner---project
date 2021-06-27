@@ -6,6 +6,8 @@
 #include <iostream>
 #include <vector>
 #include <memory>
+#include <fstream>
+#include <string>
 
 #include "airlock.h"
 #include "movingplatform.h"
@@ -46,6 +48,9 @@ private:
     std::vector<std::unique_ptr<Bullet>> enemy_bullets_;
 
     Sounds sounds_;
+    sf::Text credits_;
+    sf::Font font_;
+    std::string text_;
 
 public:
 
