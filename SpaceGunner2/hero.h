@@ -29,6 +29,7 @@ protected:
     int current_image_left_;
 
     int hp_;
+    float energy_;
     bool has_jetpack_;
 
     std::pair<float,float> barrel_cords_;
@@ -62,6 +63,8 @@ public:
 
     void set_hp(int hp);
     int get_hp();
+    void set_energy(float energy);
+    float get_energy();
 
     void change_last_direction(std::string direction);
 

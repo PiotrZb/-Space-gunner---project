@@ -337,6 +337,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
     if(hero.getGlobalBounds().intersects(sf::FloatRect(5840,685,18,18)) || hero.getGlobalBounds().intersects(sf::FloatRect(5840,194,18,18))){
 
         hero.set_jetpack(true);
+        hero.set_energy(147);
     }
 
     for(size_t i = 0; i < asteroids_.size(); i++){

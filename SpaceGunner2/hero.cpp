@@ -36,7 +36,8 @@ Hero::Hero(float x, float y){
     last_direction_ = "right";
     gravity_is_active_ = true;
     hp_ = 4;
-    has_jetpack_ = false;
+    energy_ = 147;
+    has_jetpack_ = true;
 }
 
 void Hero::move_hero(sf::Time &elapsed){
@@ -280,4 +281,14 @@ bool Hero::has_jetpack(){
 void Hero::set_jetpack(bool hpk){
 
     has_jetpack_ = hpk;
+}
+
+float Hero::get_energy(){
+
+    return energy_;
+}
+
+void Hero::set_energy(float energy){
+
+    energy_ = energy;
 }

@@ -135,6 +135,8 @@ New_game:
                 if(!collision){i++;}
             }
 
+            hud.set_energy(hero.get_energy());
+
 //--------------------------------------------------------------------------------------------------> movement
 
             if(!menu.is_active_){
@@ -174,15 +176,17 @@ New_game:
                 if((sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && hero.jump_is_active())
                   || (sf::Keyboard::isKeyPressed(sf::Keyboard::Space) && hero.has_jetpack())){
 
-                    if(hero.has_jetpack()){
+                    if(hero.has_jetpack() && (hero.get_energy() > 0)){
 
                         hero.set_velocity_y(-300);
                         sounds.play_jetpack_sound(20);
+                        hero.set_energy(hero.get_energy()- (10 * elapsed.asSeconds()));
                     }
                     else{
 
                         hero.set_velocity_y(-600);
                         sounds.play_jump_sound();
+                        hero.set_jetpack(false);
                     }
                     sounds.stop_run_sound();
                 }

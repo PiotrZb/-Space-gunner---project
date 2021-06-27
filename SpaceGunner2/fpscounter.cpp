@@ -23,5 +23,5 @@ void Fpscounter::update(sf::Vector2f view){
 
     counter_++;
 
-    setPosition(view.x - 590, view.y - 390);
+    setPosition(view.x + 500, view.y - 390);
 }
