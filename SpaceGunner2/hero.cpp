@@ -1,6 +1,6 @@
 #include "hero.h"
 
-Hero::Hero(float x, float y){
+Hero::Hero(float x, float y, std::map<std::string, std::string> &init_data){
 
     sf::Texture texture;
 
@@ -35,9 +35,10 @@ Hero::Hero(float x, float y){
     current_image_left_ = 0;
     last_direction_ = "right";
     gravity_is_active_ = true;
-    hp_ = 4;
-    energy_ = 0;
-    has_jetpack_ = false;
+    hp_ = atoi(init_data["hp"].c_str());
+    energy_ = atof(init_data["energy"].c_str());
+    if(init_data["has_jetpack"] == "true"){has_jetpack_ = true;}
+    else{has_jetpack_ = false;}
 }
 
 void Hero::move_hero(sf::Time &elapsed){

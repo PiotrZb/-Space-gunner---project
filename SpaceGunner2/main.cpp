@@ -5,6 +5,9 @@
 #include <list>
 #include <ctime>
 #include <memory>
+#include <fstream>
+#include <map>
+#include <string>
 
 #include "menu.h"
 #include "fpscounter.h"
@@ -21,6 +24,24 @@ void load_bullet_textures(std::vector<sf::Texture> &bullet_textures);
 int main(){
 
 //--------------------------------------------------------------------------------------------------> initialization
+
+    std::map<std::string,std::string> initial_data;
+    std::string line1, line2;
+    std::fstream file;
+    file.open("initialdata.txt", std::ios::in);
+    if(file.is_open()){
+
+        while(getline(file, line1, ' ')){
+
+            getline(file, line2);
+            initial_data[line1] = line2;
+        }
+    }
+    else{
+
+        std::cout<<"ERROR::MAIN::FAILED TO OPEN FILE -> initialdata.txt"<<std::endl;
+    }
+    file.close();
 
     //window
     sf::RenderWindow window(sf::VideoMode(1200, 800), "Game", sf::Style::Titlebar | sf::Style::Close);
@@ -46,7 +67,7 @@ int main(){
 
     //sounds
     Sounds sounds;
-    sounds.play_main_theme(true, 10);
+    if(initial_data["music"] == "on"){sounds.play_main_theme(true, 10);}
 
     //fps counter
     Fpscounter fpscounter;
@@ -60,7 +81,7 @@ New_game:
 
 
         //hero
-        Hero hero(0,700);
+        Hero hero(0,700, initial_data);
 
         //hud
         HUD hud;
@@ -71,7 +92,7 @@ New_game:
         std::vector<std::unique_ptr<Bullet>> bullets;
 
         //Scene 1
-        Scene1 scene1;
+        Scene1 scene1(initial_data);
 
         sf::Clock clock;
         sf::Time elapsed;

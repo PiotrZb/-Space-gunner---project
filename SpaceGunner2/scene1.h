@@ -8,6 +8,7 @@
 #include <memory>
 #include <fstream>
 #include <string>
+#include <map>
 
 #include "airlock.h"
 #include "movingplatform.h"
@@ -38,12 +39,6 @@ private:
     MovingPlatform platform3_;
     std::vector<std::unique_ptr<Asteroid>> asteroids_;
 
-    //enemies
-    Turret turret1_;
-    Soldier soldier1_ = Soldier(1150,331,sf::FloatRect(1150,193,400,140));
-    Soldier soldier2_ = Soldier(3430,711,sf::FloatRect(3430,571,400,140));
-
-
     //enemy bullets
     std::vector<std::unique_ptr<Bullet>> enemy_bullets_;
 
@@ -52,9 +47,16 @@ private:
     sf::Font font_;
     std::string text_;
 
+    std::map<std::string,std::string> initial_data_;
+
+    //enemies
+    Turret turret1_;
+    Soldier soldier1_ = Soldier(1150,331,sf::FloatRect(1150,193,400,140), initial_data_);
+    Soldier soldier2_ = Soldier(3430,711,sf::FloatRect(3430,571,400,140), initial_data_);
+
 public:
 
-    Scene1();
+    Scene1(std::map<std::string,std::string> &init_data);
 
     std::vector<sf::FloatRect> objects_bounds();
 

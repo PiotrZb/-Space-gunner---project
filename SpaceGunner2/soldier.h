@@ -6,6 +6,7 @@
 #include <iostream>
 #include <vector>
 #include <list>
+#include <map>
 
 #include "hero.h"
 #include "bullet.h"
@@ -19,7 +20,7 @@ private:
 
 public:
 
-    Soldier(float x, float y, sf::FloatRect rec):Hero(x,y){
+    Soldier(float x, float y, sf::FloatRect rec, std::map<std::string,std::string> &init_data):Hero(x,y, init_data){
 
         setColor(sf::Color::Red);
         movement_bounds_ = rec;

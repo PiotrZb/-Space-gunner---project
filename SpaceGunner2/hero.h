@@ -5,6 +5,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 #include <vector>
+#include <map>
 
 class Hero : public sf::Sprite
 {
@@ -36,7 +37,7 @@ protected:
 
 public:
 
-    Hero(float x, float y);
+    Hero(float x, float y, std::map<std::string,std::string> &init_data);
 
     void animate();
     void run_animation();

@@ -1,6 +1,8 @@
 #include "scene1.h"
 
-Scene1::Scene1(){
+Scene1::Scene1(std::map<std::string,std::string> &init_data){
+
+    initial_data_ = init_data;
 
     if(!scene1_texture_.loadFromFile("Textures/Sceneelements/Scene1.png")){
         std::cout<<"ERROR::SCENE1::TEXTURE FAILED TO LOAD -> Textures/Sceneelements/Scene1.png"<<std::endl;
@@ -11,7 +13,7 @@ Scene1::Scene1(){
     //enemies
     turret1_.setPosition(3660,283);
 
-    for(int i = 0; i < 15; i++){
+    for(int i = 0; i < atoi(initial_data_["number_of_asteroids"].c_str()); i++){
 
         asteroids_.emplace_back(std::make_unique<Asteroid>());
     }
@@ -304,7 +306,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
         if(hero.getGlobalBounds().intersects(enemy_bullets_[i]->getGlobalBounds())){
 
             enemy_bullets_.erase(enemy_bullets_.begin()+i);
-            hero.set_hp(hero.get_hp()-1);
+            hero.set_hp(hero.get_hp()-atoi(initial_data_["enemy_demage"].c_str()));
             sounds_.play_hurt_sound();
         }
         else{
@@ -317,17 +319,17 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
 
         if(hero_bullets[i]->getGlobalBounds().intersects(turret1_.getGlobalBounds()) && turret1_.is_alive_){
 
-            turret1_.set_hp(turret1_.get_hp()-20);
+            turret1_.set_hp(turret1_.get_hp() - atoi(initial_data_["hero_demage"].c_str()));
             hero_bullets.erase(hero_bullets.begin()+i);
         }
         else if(hero_bullets[i]->getGlobalBounds().intersects(soldier1_.getGlobalBounds()) && soldier1_.get_hp() > 0){
 
-            soldier1_.set_hp(soldier1_.get_hp() - 20);
+            soldier1_.set_hp(soldier1_.get_hp() - atoi(initial_data_["hero_demage"].c_str()));
             hero_bullets.erase(hero_bullets.begin()+i);
         }
         else if(hero_bullets[i]->getGlobalBounds().intersects(soldier2_.getGlobalBounds()) && soldier2_.get_hp() > 0){
 
-            soldier2_.set_hp(soldier2_.get_hp() - 20);
+            soldier2_.set_hp(soldier2_.get_hp() - atoi(initial_data_["hero_demage"].c_str()));
             hero_bullets.erase(hero_bullets.begin()+i);
         }
         else{
