@@ -36,8 +36,8 @@ Hero::Hero(float x, float y){
     last_direction_ = "right";
     gravity_is_active_ = true;
     hp_ = 4;
-    energy_ = 147;
-    has_jetpack_ = true;
+    energy_ = 0;
+    has_jetpack_ = false;
 }
 
 void Hero::move_hero(sf::Time &elapsed){
@@ -204,7 +204,7 @@ void Hero::collisions(std::vector<sf::FloatRect> objects_bounds, sf::Time &elaps
 
         if(X.intersects(objects_bounds[i])){
 
-            if(velocity_x_ > 0){
+            if(velocity_x_ > 0 || velocity_xx_ > 0){
 
                 setPosition(objects_bounds[i].left - getGlobalBounds().width, getGlobalBounds().top);
             }
@@ -218,7 +218,7 @@ void Hero::collisions(std::vector<sf::FloatRect> objects_bounds, sf::Time &elaps
             velocity_yy_ = 0;
         }
 
-        if(Y.intersects(objects_bounds[i])){
+        else if(Y.intersects(objects_bounds[i])){
 
             if(velocity_y_ < 0){
 

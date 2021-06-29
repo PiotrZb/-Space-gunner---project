@@ -68,6 +68,13 @@ Scene1::Scene1(){
     objects_bounds_.emplace_back(sf::FloatRect(5460,711,450,89));
     objects_bounds_.emplace_back(sf::FloatRect(9840,711,350,89));
 
+    objects_bounds_.emplace_back(sf::FloatRect(4260,71,50,26));
+    objects_bounds_.emplace_back(sf::FloatRect(4260,611,50,26));
+    objects_bounds_.emplace_back(sf::FloatRect(4650,611,50,26));
+    objects_bounds_.emplace_back(sf::FloatRect(4650,71,50,26));
+    objects_bounds_.emplace_back(sf::FloatRect(5100,71,50,26));
+    objects_bounds_.emplace_back(sf::FloatRect(5100,611,50,26));
+
     if(!jetpack_texture_.loadFromFile("Textures/Hero/jetpack.png")){
         std::cout<<"ERROR::SCENE1::TEXTURE FAILED TO LOAD -> Textures/Hero/jetpack.png"<<std::endl;
     }
@@ -346,6 +353,7 @@ void Scene1::update(Hero &hero, sf::Time &elapsed, std::vector<std::unique_ptr<B
 
             hero.set_hp(hero.get_hp()-1);
             asteroids_.erase(asteroids_.begin()+i);
+            sounds_.play_hurt_sound();
             break;
         }
     }
